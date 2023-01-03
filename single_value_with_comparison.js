@@ -414,7 +414,7 @@ element.style.fontFamily = config.fontFamily;
   //this.comp_value_element.innerHTML = comparison_value;
 
 this.main_value_center.innerHTML = header_value;
-this.comp_value_center.innerHTML = comparison_value;
+this.comp_value_left.innerHTML = comparison_value;
 
   this.comp_value_left.style.textAlign = "right";
   this.comp_value_right.style.textAlign = "left";
