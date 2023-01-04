@@ -187,9 +187,9 @@ create: function(element, config){
       /* Vertical centering */
       //height: 100%;
       display: flex;
-      flex-direction: row;
+      flex-direction: row-reverse;
       justify-content: center;
-      text-align: center;
+      text-align: left;
       font-family: 'Google Sans';font-size: 22px;
     }
     .main-value-text-large {
@@ -414,7 +414,7 @@ element.style.fontFamily = config.fontFamily;
   //this.comp_value_element.innerHTML = comparison_value;
 
 this.main_value_center.innerHTML = header_value;
-this.comp_value_left.innerHTML = comparison_value;
+this.comp_value_center.innerHTML = comparison_value;
 
   this.comp_value_left.style.textAlign = "right";
   this.comp_value_right.style.textAlign = "left";
