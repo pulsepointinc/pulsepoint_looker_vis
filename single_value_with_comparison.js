@@ -187,9 +187,9 @@ create: function(element, config){
       /* Vertical centering */
       //height: 100%;
       display: flex;
-      flex-direction: row-reverse;
+      flex-direction: row;
       justify-content: center;
-      text-align: left;
+      text-align: center;
       font-family: 'Google Sans';font-size: 22px;
     }
     .main-value-text-large {
