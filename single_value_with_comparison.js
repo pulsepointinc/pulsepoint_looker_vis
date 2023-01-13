@@ -481,12 +481,12 @@ looker.plugins.visualizations.add({
     this.comp_value_center_right.innerHTML = "";
    } else if (config.comp_label_placement == "left") {
     // this.comp_value_left.innerHTML = config.comp_label;
-    this.comp_value_center_left.innerHTML = config.comp_label;
+    this.comp_value_center_left.innerHTML = config.comp_label+" ";
     this.comp_value_center_right.innerHTML = "";
    } else if (config.comp_label_placement == "right") {
     // this.comp_value_right.innerHTML = config.comp_label;
     this.comp_value_center_left.innerHTML = "";
-    this.comp_value_center_right.innerHTML = config.comp_label;
+    this.comp_value_center_right.innerHTML = " "+config.comp_label;
    }
   
     this.main_value_left.style.textAlign = "right";
