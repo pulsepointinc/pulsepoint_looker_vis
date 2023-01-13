@@ -1,5 +1,5 @@
 looker.plugins.visualizations.add({
-  options: {
+    options: {
       top_value_color: {
         section: 'Formatting',
         display_size: 'third',
@@ -253,6 +253,7 @@ looker.plugins.visualizations.add({
     }
     if (j === 1 && i === 4) {
       this.comp_value_both = td
+      this.comp_value_center_left = td.appendChild(document.createElement("comp_center_left"));
       this.comp_value_center = td.appendChild(document.createElement("comp_center"));
       this.comp_value_center_right = td.appendChild(document.createElement("comp_center_right"));
     }
@@ -277,7 +278,7 @@ looker.plugins.visualizations.add({
   main_table = main_value.appendChild(tbl_main);
   main_table.style.padding = "0px 0px 0px 0px";
   //comp_table = main_value.appendChild(tbl_comp);
-  // main_table.style.border="1px solid red";
+  main_table.style.border="1px solid red";
   
   },
   
@@ -356,12 +357,18 @@ looker.plugins.visualizations.add({
   this.comp_value_center.style.color = config.comp_value_color;
   this.comp_value_center.style.fontSize = config.comp_fontSize+"px";
     this.comp_value_left.style.color = config.comp_label_color;
+    this.comp_value_center_left.style.color = config.comp_label_color;
     this.comp_value_right.style.color = config.comp_label_color;
+    this.comp_value_center_right.style.color = config.comp_label_color;
     this.comp_value_top.style.color = config.comp_label_color;
     this.comp_value_bottom.style.color = config.comp_label_color;
   
     this.comp_value_left.style.fontSize = config.comp_label_fontSize+"px";
+    this.comp_value_center_left.style.fontSize = config.comp_label_fontSize+"px";
+    
     this.comp_value_right.style.fontSize = config.comp_label_fontSize+"px";
+    this.comp_value_center_right.style.fontSize = config.comp_label_fontSize+"px";
+    
     this.comp_value_top.style.fontSize = config.comp_label_fontSize+"px";
     this.comp_value_bottom.style.fontSize = config.comp_label_fontSize+"px";
   
@@ -393,7 +400,10 @@ looker.plugins.visualizations.add({
   
   if (config.comp_label_bold) {
      this.comp_value_left.style.fontWeight = "bold";
+     this.comp_value_center_left.style.fontWeight = "bold";
+    
      this.comp_value_right.style.fontWeight = "bold";
+     this.comp_value_center_right.style.fontWeight = "bold";
      this.comp_value_top.style.fontWeight = "bold";
      this.comp_value_bottom.style.fontWeight = "bold";
    } else {
@@ -434,8 +444,8 @@ looker.plugins.visualizations.add({
   this.main_value_center.innerHTML = header_value;
   this.comp_value_center.innerHTML = comparison_value;
   
-  comparison_label = config.comp_label;
-  this.comp_value_center_right.innerHTML = comparison_label;
+  // comparison_label = config.comp_label;
+  // this.comp_value_center_right.innerHTML = config.comp_label;
   // this.comp_value_center_right.style.color = "red";
   // this.comp_value_center_right.style.textAlign = "right";
   
@@ -447,8 +457,10 @@ looker.plugins.visualizations.add({
     this.comp_value_right.innerHTML = "";
     this.comp_value_top.innerHTML = "";
     this.comp_value_bottom.innerHTML = "";
+    
+  // config.comp_label_placement = "below";
   
-  if (config.comp_label_placement == "none") {
+    if (config.comp_label_placement == "none") {
     this.comp_value_left.innerHTML = "";
     this.comp_value_right.innerHTML = "";
     this.comp_value_top.innerHTML = "";
@@ -458,9 +470,11 @@ looker.plugins.visualizations.add({
    } else if (config.comp_label_placement == "below") {
     this.comp_value_bottom.innerHTML = config.comp_label;
    } else if (config.comp_label_placement == "left") {
-    this.comp_value_left.innerHTML = config.comp_label;
+    // this.comp_value_left.innerHTML = config.comp_label;
+    this.comp_value_center_left.innerHTML = config.comp_label;
    } else if (config.comp_label_placement == "right") {
-    this.comp_value_right.innerHTML = config.comp_label;
+    // this.comp_value_right.innerHTML = config.comp_label;
+    this.comp_value_center_right.innerHTML = config.comp_label;
    }
   
     this.main_value_left.style.textAlign = "right";
@@ -469,7 +483,7 @@ looker.plugins.visualizations.add({
     this.main_value_right.innerHTML = "";
     this.main_value_top.innerHTML = "";
     this.main_value_bottom.innerHTML = "";
-  
+  // config.top_label_placement = "right";
   if (config.top_label_placement == "none") {
     this.main_value_left.innerHTML = "";
     this.main_value_right.innerHTML = "";
