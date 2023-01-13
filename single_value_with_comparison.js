@@ -278,7 +278,7 @@ looker.plugins.visualizations.add({
   main_table = main_value.appendChild(tbl_main);
   main_table.style.padding = "0px 0px 0px 0px";
   //comp_table = main_value.appendChild(tbl_comp);
-  main_table.style.border="1px solid red";
+  // main_table.style.border="1px solid red";
   
   },
   
@@ -401,7 +401,6 @@ looker.plugins.visualizations.add({
   if (config.comp_label_bold) {
      this.comp_value_left.style.fontWeight = "bold";
      this.comp_value_center_left.style.fontWeight = "bold";
-    
      this.comp_value_right.style.fontWeight = "bold";
      this.comp_value_center_right.style.fontWeight = "bold";
      this.comp_value_top.style.fontWeight = "bold";
@@ -411,6 +410,8 @@ looker.plugins.visualizations.add({
      this.comp_value_right.style.fontWeight = "normal";
      this.comp_value_top.style.fontWeight = "normal";
      this.comp_value_bottom.style.fontWeight = "normal";
+     this.comp_value_center_left.style.fontWeight = "normal";
+     this.comp_value_center_right.style.fontWeight = "normal";
    }
   
   if (config.top_label_bold) {
@@ -457,6 +458,8 @@ looker.plugins.visualizations.add({
     this.comp_value_right.innerHTML = "";
     this.comp_value_top.innerHTML = "";
     this.comp_value_bottom.innerHTML = "";
+    this.comp_value_center_left.innerHTML = "";
+    this.comp_value_center_right.innerHTML = "";
     
   // config.comp_label_placement = "below";
   
@@ -465,15 +468,24 @@ looker.plugins.visualizations.add({
     this.comp_value_right.innerHTML = "";
     this.comp_value_top.innerHTML = "";
     this.comp_value_bottom.innerHTML = "";
+    this.comp_value_center_left.innerHTML = "";
+    this.comp_value_center_right.innerHTML = "";
+    
    } else if (config.comp_label_placement == "above") {
     this.comp_value_top.innerHTML = config.comp_label;
+    this.comp_value_center_left.innerHTML = "";
+    this.comp_value_center_right.innerHTML = "";
    } else if (config.comp_label_placement == "below") {
     this.comp_value_bottom.innerHTML = config.comp_label;
+    this.comp_value_center_left.innerHTML = "";
+    this.comp_value_center_right.innerHTML = "";
    } else if (config.comp_label_placement == "left") {
     // this.comp_value_left.innerHTML = config.comp_label;
     this.comp_value_center_left.innerHTML = config.comp_label;
+    this.comp_value_center_right.innerHTML = "";
    } else if (config.comp_label_placement == "right") {
     // this.comp_value_right.innerHTML = config.comp_label;
+    this.comp_value_center_left.innerHTML = "";
     this.comp_value_center_right.innerHTML = config.comp_label;
    }
   
