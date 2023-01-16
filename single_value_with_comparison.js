@@ -513,6 +513,7 @@ looker.plugins.visualizations.add({
   element.style.margin = "0px 0px 0px 0px";
   element.style.padding = "10px 0px 0px 0px";
   element.style.width = "100%";
+  element.style.height = "100%";
   element.style.backgroundColor = config.background_color;
   
     // this.main_value_left.innerHTML = "left";
