@@ -176,7 +176,7 @@ looker.plugins.visualizations.add({
     <style>
       .main-value-vis {
         /* Vertical centering */
-        //height: 100%;
+        height: 100%;
         display: flex;
         flex-direction: row;
         justify-content: center;
