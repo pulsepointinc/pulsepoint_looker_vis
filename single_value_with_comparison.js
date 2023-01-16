@@ -221,7 +221,7 @@ looker.plugins.visualizations.add({
   //this.comp_value_element = comp_value.appendChild(document.createElement("comp-value_subdiv"));
   // this.main_value_element.style.border = "thick solid #0000FF";
       tbl_main = document.createElement('table');
-      tbl_main.style.padding = "0px 0px 10px 0px";
+      tbl_main.style.padding = "0px 0px 0px 0px";
       tbl_main.cellSpacing = "0";
     // tbl_main.style.border = "thick solid #0000FF";
       //tbl_comp = document.createElement('table');
@@ -513,6 +513,7 @@ looker.plugins.visualizations.add({
   element.style.margin = "0px 0px 0px 0px";
   element.style.padding = "0px 0px 0px 0px";
   element.style.width = "100%";
+  element.style.height = "100%";
   element.style.backgroundColor = config.background_color;
   
     // this.main_value_left.innerHTML = "left";
