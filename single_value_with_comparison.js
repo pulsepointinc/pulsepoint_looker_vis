@@ -510,7 +510,9 @@ looker.plugins.visualizations.add({
    } else if (config.top_label_placement == "right") {
     this.main_value_right.innerHTML = config.top_label;
    }
-  
+  element.style.margin = "0px 0px 0px 0px";
+  element.style.padding = "10px 0px 0px 0px";
+  element.style.width = "100%";
   element.style.backgroundColor = config.background_color;
   
     // this.main_value_left.innerHTML = "left";
