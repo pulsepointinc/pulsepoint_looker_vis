@@ -357,13 +357,16 @@ looker.plugins.visualizations.add({
   if (measure_development < 1) {
     measure_development = measure_development * (-1)
     signage = "- ";
-  } else if (measure_development == 0) {
+  } else if (measure_development == 0 || isNaN(measure_development)) {
     signage = "";
   } else {
     signage = "+ ";
   }
   
+  if (!(isNaN(measure_development))) {
+  } else {
   comparison_value = signage + measure_development + "%";
+  }
 
   } else {
     comparison_value = "";
