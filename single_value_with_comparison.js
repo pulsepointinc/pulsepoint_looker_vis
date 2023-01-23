@@ -363,9 +363,10 @@ looker.plugins.visualizations.add({
     signage = "+ ";
   }
   
-  if (!(isNaN(measure_development))) {
+  if (isNaN(measure_development)) {
+    comparison_value = "";
   } else {
-  comparison_value = signage + measure_development + "%";
+    comparison_value = signage + measure_development + "%";
   }
 
   } else {
