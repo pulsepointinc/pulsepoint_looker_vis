@@ -366,6 +366,7 @@ looker.plugins.visualizations.add({
   comparison_value = signage + measure_development + "%";
 
   } else {
+    comparison_value = "";
   }
   
       //header_value += config.top_label;
