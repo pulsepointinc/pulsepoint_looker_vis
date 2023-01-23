@@ -367,6 +367,7 @@ looker.plugins.visualizations.add({
 
   } else {
     comparison_value = "";
+    measure_development = "";
   }
   
       //header_value += config.top_label;
@@ -479,6 +480,7 @@ looker.plugins.visualizations.add({
   if (config.comparison_onoff) {
     this.comp_value_center.innerHTML = comparison_value;
   } else {
+    this.comp_value_center.innerHTML = "";
   }
   
   // comparison_label = config.comp_label;
