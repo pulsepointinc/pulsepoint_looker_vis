@@ -501,7 +501,7 @@ looker.plugins.visualizations.add({
     
   // config.comp_label_placement = "below";
   
-    if (config.comp_label_placement == "none") {
+    if (config.comp_label_placement == "none" || !(config.comparison_onoff)) {
     this.comp_value_left.innerHTML = "";
     this.comp_value_right.innerHTML = "";
     this.comp_value_top.innerHTML = "";
@@ -509,19 +509,19 @@ looker.plugins.visualizations.add({
     this.comp_value_center_left.innerHTML = "";
     this.comp_value_center_right.innerHTML = "";
     
-   } else if (config.comp_label_placement == "above") {
+   } else if (config.comp_label_placement == "above" && config.comparison_onoff) {
     this.comp_value_top.innerHTML = config.comp_label;
     this.comp_value_center_left.innerHTML = "";
     this.comp_value_center_right.innerHTML = "";
-   } else if (config.comp_label_placement == "below") {
+   } else if (config.comp_label_placement == "below" && config.comparison_onoff) {
     this.comp_value_bottom.innerHTML = config.comp_label;
     this.comp_value_center_left.innerHTML = "";
     this.comp_value_center_right.innerHTML = "";
-   } else if (config.comp_label_placement == "left") {
+   } else if (config.comp_label_placement == "left" && config.comparison_onoff) {
     // this.comp_value_left.innerHTML = config.comp_label;
     this.comp_value_center_left.innerHTML = config.comp_label+" ";
     this.comp_value_center_right.innerHTML = "";
-   } else if (config.comp_label_placement == "right") {
+   } else if (config.comp_label_placement == "right" && config.comparison_onoff) {
     // this.comp_value_right.innerHTML = config.comp_label;
     this.comp_value_center_left.innerHTML = "";
     this.comp_value_center_right.innerHTML = " "+config.comp_label;
