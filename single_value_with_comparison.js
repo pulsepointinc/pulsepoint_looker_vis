@@ -314,7 +314,7 @@ looker.plugins.visualizations.add({
   //for (i = 0; i < data.length; i++)
   //  html += ((i+1) + ": " + data[i] + queryResponse[0].fields.dimensions[0].name);
   
-      var i = 1;
+      var counter = 0;
       var row_cap = 0;
       const dimensions = [];
       const measures = [];
@@ -334,19 +334,21 @@ looker.plugins.visualizations.add({
   
     //html += LookerCharts.Utils.htmlForCell(dimensions[0]);
     //html += LookerCharts.Utils.htmlForCell(measures[0]);
-          if (i == row_cap) {
-        i = 1;
+          if (counter == row_cap) {
+            //counter = 1;
+            counter++;
         break;
    }
-        i++;
+        counter++;
   }
 
-  if (row_cap == 1) {
-    this.addError({title: "No comparison", message: "This visualization requires two rows to handle comparison."});
+  if (counter < row_cap) {
+    this.addError({title: "Row count", message: "This visualization requires two rows to handle comparison and one row to handle single value."});
     return;
   }
   
-  
+  if (config.comparison_onoff) {
+  } else {
   //var measure_development = "";
       var measure_development = measures[0].value / measures[1].value;
       var signage = "";
@@ -362,10 +364,11 @@ looker.plugins.visualizations.add({
     signage = "+ ";
   }
   
+  comparison_value = signage + measure_development + "%";
+  }
+  
       //header_value += config.top_label;
       header_value += " " + LookerCharts.Utils.htmlForCell(measures[0]);
-  
-      comparison_value = signage + measure_development + "%";
   
       //comparison_value += " " + config.comp_label;
   
@@ -469,7 +472,12 @@ looker.plugins.visualizations.add({
     //" some_text";
   
   this.main_value_center.innerHTML = header_value;
+
+  
+  if (config.comparison_onoff) {
+  } else {
   this.comp_value_center.innerHTML = comparison_value;
+  }
   
   // comparison_label = config.comp_label;
   // this.comp_value_center_right.innerHTML = config.comp_label;
