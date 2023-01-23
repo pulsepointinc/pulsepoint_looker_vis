@@ -299,7 +299,12 @@ looker.plugins.visualizations.add({
 
     // Throw some errors and exit if the shape of the data isn't what this chart needs.
     if (queryResponse.fields.dimensions.length == 0) {
-      this.addError({title: "No Dimensions", message: "This chart requires dimensions..."});
+      this.addError({title: "No Dimensions", message: "This visualization requires a dimension, wo rows (or one depending on option selected) and one measure."});
+      return;
+    }
+
+    if (queryResponse.fields.measures.length == 0) {
+      this.addError({title: "No Measures", message: "This visualization requires a measure."});
       return;
     }
   
@@ -334,6 +339,11 @@ looker.plugins.visualizations.add({
         break;
    }
         i++;
+  }
+
+  if (row_cap == 1) {
+    this.addError({title: "No comparison", message: "This visualization requires two rows to handle comparison."});
+    return;
   }
   
   
