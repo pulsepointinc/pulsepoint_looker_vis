@@ -348,7 +348,6 @@ looker.plugins.visualizations.add({
   }
   
   if (config.comparison_onoff) {
-  } else {
   //var measure_development = "";
       var measure_development = measures[0].value / measures[1].value;
       var signage = "";
@@ -365,6 +364,8 @@ looker.plugins.visualizations.add({
   }
   
   comparison_value = signage + measure_development + "%";
+
+  } else {
   }
   
       //header_value += config.top_label;
@@ -475,8 +476,8 @@ looker.plugins.visualizations.add({
 
   
   if (config.comparison_onoff) {
+    this.comp_value_center.innerHTML = comparison_value;
   } else {
-  this.comp_value_center.innerHTML = comparison_value;
   }
   
   // comparison_label = config.comp_label;
