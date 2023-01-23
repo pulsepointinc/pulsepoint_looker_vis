@@ -147,7 +147,7 @@ looker.plugins.visualizations.add({
       background_color: {
         section: 'General',
         display_size: 'third',
-        order: 1,
+        order: 2,
         type: "string",
         label: "Background color",
         default: "#FFFFFF",
@@ -158,7 +158,7 @@ looker.plugins.visualizations.add({
         display: 'select',
         display_size: 'two-thirds',
         label: 'Font Family',
-        order: 2,
+        order: 3,
         section: 'General',
         type: 'string',
         values: [
@@ -166,7 +166,15 @@ looker.plugins.visualizations.add({
           { 'Helvetica': 'BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif' },
           { 'Times New Roman': 'Roboto, "Noto Sans", "Noto Sans JP", "Noto Sans CJK KR", "Noto Sans Arabic UI", "Noto Sans Devanagari UI", "Noto Sans Hebrew", "Noto Sans Thai UI", Helvetica, Arial, sans-serif' },
         ],
-      }
+      },
+      comparison_onoff: {
+        section: 'General',
+        default: false,
+        display_size: 'normal',
+        order: 1,
+        type: "boolean",
+        label: "Comparison"
+      },
       },
   
   create: function(element, config){
@@ -288,6 +296,12 @@ looker.plugins.visualizations.add({
   this.clearErrors();
     var header_value = "";
     var comparison_value = "";
+
+    // Throw some errors and exit if the shape of the data isn't what this chart needs.
+    if (queryResponse.fields.dimensions.length == 0) {
+      this.addError({title: "No Dimensions", message: "This chart requires dimensions..."});
+      return;
+    }
   
   
     //var html = queryResponse.items[1];
@@ -296,10 +310,17 @@ looker.plugins.visualizations.add({
   //  html += ((i+1) + ": " + data[i] + queryResponse[0].fields.dimensions[0].name);
   
       var i = 1;
+      var row_cap = 0;
       const dimensions = [];
       const measures = [];
       const comparison = [];
   
+      if (config.comparison_onoff) {
+        row_cap = 2;
+      } else {
+        row_cap = 1;
+      }
+
   for(var row of data) {
     var dim = row[queryResponse.fields.dimensions[0].name];
             dimensions.push(dim);
@@ -308,16 +329,11 @@ looker.plugins.visualizations.add({
   
     //html += LookerCharts.Utils.htmlForCell(dimensions[0]);
     //html += LookerCharts.Utils.htmlForCell(measures[0]);
-          if (i == 2) {
+          if (i == row_cap) {
         i = 1;
         break;
    }
         i++;
-  }
-  
-  if (measures[1].value == 0 || Number(LookerCharts.Utils.textForCell(measures[1])) == null) {
-    this.addError({title: "Incorrect data", message: "Compared value is incorrect or missing"});
-    return;
   }
   
   
