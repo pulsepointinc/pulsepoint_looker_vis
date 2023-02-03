@@ -299,7 +299,7 @@ looker.plugins.visualizations.add({
 
     // Throw some errors and exit if the shape of the data isn't what this chart needs.
     if (queryResponse.fields.dimensions.length == 0) {
-      this.addError({title: "No Dimensions", message: "This visualization requires a dimension."});
+      this.addError({title: "No Dimensions", message: "This visualization requires a dimension, wo rows (or one depending on option selected) and one measure."});
       return;
     }
 
@@ -342,12 +342,12 @@ looker.plugins.visualizations.add({
         counter++;
   }
 
-//   if (counter < row_cap) {
-//     this.addError({title: "Row count", message: "This visualization requires two rows to handle comparison and one row to handle single value."});
-//     return;
-//   }
+  if (counter < row_cap) {
+    this.addError({title: "Row count", message: "This visualization requires two rows to handle comparison and one row to handle single value."});
+    return;
+  }
   
-  if (config.comparison_onoff & counter >= row_cap) {
+  if (config.comparison_onoff) {
   //var measure_development = "";
       var measure_development = measures[0].value / measures[1].value;
       var signage = "";
