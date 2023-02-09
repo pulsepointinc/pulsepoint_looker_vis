@@ -354,7 +354,7 @@ looker.plugins.visualizations.add({
       var check = measures[0].value / measures[1].value;
       measure_development = Math.round((measure_development-1) * 1000) / 10;
   
-  if (measure_development < 1) {
+  if (measure_development < 0) {
     measure_development = measure_development * (-1)
     signage = "- ";
   } else if (measure_development == 0 || isNaN(measure_development)) {
