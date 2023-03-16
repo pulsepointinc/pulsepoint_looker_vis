@@ -365,8 +365,10 @@ looker.plugins.visualizations.add({
   
   if (isNaN(measure_development)) {
     comparison_value = "";
-  } else {
+  } else if (measures[1].value != 0) {
     comparison_value = signage + measure_development + "% PoP";
+  } else {
+    comparison_value = "";
   }
 
   } else {
